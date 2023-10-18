@@ -11,20 +11,22 @@
 
 [![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23molkart-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/molkart)[![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?labelColor=000000&logo=twitter)](https://twitter.com/nf_core)[![Follow on Mastodon](https://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
 
-## Important note
-
-This pipeline is under active development and does not work at this point. If you want to process your Resolve Bioscience data in the meantime, please go to https://github.com/FloWuenne/nf-MolKart, where you can find a working nextflow pipeline, outside the nf-core ecosystem. In the coming weeks, nf-MolKart will be completely transitioned into nf-core/molkart for future use.
-
 ## Introduction
 
-**nf-core/molkart** is a pipeline for processing Molecular Cartography data from Resolve Bioscience (combinatorial FISH). It takes as input a table of FISH spot positions (x,y,z,gene), a corresponding DAPI image (tiff format) and optionally a membrane staining image in tiff format. nf-core/molkart performs end-to-end processing of the data including image processing, QC filtering of spots, cell segmentation, spot to cell assignment and reports quality metrics such as the spot assignment rate, average spots per cell and segmentation mask size ranges.
+**nf-core/molkart** is a pipeline for processing Molecular Cartography data from Resolve Bioscience (combinatorial FISH). It takes as input a table of FISH spot positions (x,y,z,gene), a corresponding DAPI image and optionally a membrane staining image in the `tiff` format. nf-core/molkart performs end-to-end processing of the data including image pre-processing, QC filtering of spots, cell segmentation, spot-to-cell assignment and reports quality metrics such as the spot assignment rate, average spots per cell and segmentation mask size ranges.
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
+<p align="center">
+    <img title="molkart workflow" src="docs/images/nfcore_molkart_metromap.png" width=30%>
+</p>
 
-1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+1. Correct grid lines with [Mindagap](https://github.com/ViriatoII/MindaGap) on any provided image.
+2. Apply contrast-limited adaptive histogram equalization ([CLAHE](https://scikit-image.org/docs/stable/api/skimage.exposure.html#skimage.exposure.equalize_adapthist)) on any provided image (can be toggled off).
+3. Perform segmentation to create cell masks with [Mesmer's](https://doi.org/10.1038/s41587-021-01094-0) whole-cell model ([Cellpose](https://www.cellpose.org/), and [ilastik](https://www.ilastik.org/) also available).
+4. Run QC filtering on spots to filter out duplicates with [Mindagap](https://github.com/ViriatoII/MindaGap).
+5. Project spots to multichannel image.
+6. Quantify spots per cell with [MCQuant](https://github.com/labsyspharm/quantification).
+7. Gather QC metrics specific to the pipeline.
+8. Produce QC report with [`MultiQC`](http://multiqc.info/).
 
 ## Usage
 
@@ -33,9 +35,6 @@ If you are new to Nextflow and nf-core, please refer to [this page](https://nf-c
 to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline)
 with `-profile test` before running the workflow on actual data.
 :::
-
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
 
 First, prepare a samplesheet with your input data that looks as follows:
 
@@ -46,13 +45,9 @@ sample,nuclear_image,spot_locations,membrane_image
 sample1,sample1_DAPI.tif,sample1_spots.txt, sample1_WGA.tif
 ```
 
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
+Each row represents a sample or FOV. It is denoted by the sample identifier, the path the nuclear image that corresponds to that FOV, the path to the spots table that corresponds to that FOV, and an optional second channel that could help guide segmentation (such as a membrane stain).
 
--->
-
-Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
+Now, you can run the pipeline with default values using:
 
 ```bash
 nextflow run nf-core/molkart \
@@ -77,11 +72,9 @@ For more details about the output files and reports, please refer to the
 
 ## Credits
 
-nf-core/molkart was originally written by @FloWuenne.
+nf-core/molkart was originally written by [Florian Wünnemann](https://github.com/FloWuenne) and adapted to nf-core by [Krešimir Beštak](https://github.com/kbestak) in the [Spatial omics group](https://www.schapirolab.com/) at the [Institute for Computational Biomedicine](https://www.medizinische-fakultaet-hd.uni-heidelberg.de/einrichtungen/institute/institute-for-computational-biomedicine) funded by the [HiGHmed initiative](https://www.highmed.org/en/home).
 
-We thank the following people for their extensive assistance in the development of this pipeline:
-
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+We thank [Maxime U Garcia](https://github.com/maxulysse) for his valuable assistance in the development of this pipeline.
 
 ## Contributions and Support
 
@@ -93,8 +86,6 @@ For further information or help, don't hesitate to get in touch on the [Slack `#
 
 <!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
 <!-- If you use  nf-core/molkart for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 

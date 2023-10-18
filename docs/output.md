@@ -12,9 +12,55 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
-- [FastQC](#fastqc) - Raw read QC
+- [Image processing](#imageprocessing)
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+```
+/results/
+├── cellpose
+│   └── sampleid_cellpose_mask.tif
+├── clahe
+│   ├── sampleid_0.clahe.tiff
+│   └── sampleid_1.clahe.tiff
+├── ilastik
+│   ├── heart_2d_r1_s2_ilastik_heart_2d_r1_s2.tiff -> /workspace/work/00/e6c57d110fa8563f2f47d7b4698399/heart_2d_r1_s2.tiff
+│   ├── heart_2d_r1_s2_probability_heart_2d_r1_s2.h5 -> /workspace/work/8d/3b35fa62e9275273e55daffbee697b/heart_2d_r1_s2.h5
+│   └── heart_2d_r1_s2.stack.hdf5 -> /workspace/work/8a/e7825074f7755cbfd6f58680aa9b8b/heart_2d_r1_s2.stack.hdf5
+├── mcquant
+│   ├── heart_2d_r1_s2.spots.subset_markedDups_heart_2d_r1_s2.csv
+│   └── heart_2d_r1_s2.spots.subset_markedDups_mask.csv
+├── mesmer
+│   └── heart_2d_r1_s2_mesmer_mask.tif -> /workspace/work/75/f833710f7fc20220d8b03a69f3c5fe/mask.tif
+├── mindagap
+│   ├── heart_2d_r1_s2.DAPI.subset_gridfilled.tiff
+│   ├── heart_2d_r1_s2.spots.subset_markedDups.txt
+│   └── heart_2d_r1_s2.WGA.subset_gridfilled.tiff
+├── molcart_qc
+│   ├── heart_2d_r1_s2.cellpose.spot_QC.csv -> /workspace/work/74/480f8fb8b23751b990cd09e7034e9d/heart_2d_r1_s2.cellpose.spot_QC.csv
+│   ├── heart_2d_r1_s2.ilastik.spot_QC.csv -> /workspace/work/81/b4cdb82051b2442b750a496e0a7bda/heart_2d_r1_s2.ilastik.spot_QC.csv
+│   └── heart_2d_r1_s2.mesmer.spot_QC.csv -> /workspace/work/1e/7a7cebf9e9584fbc76cd614ef7f919/heart_2d_r1_s2.mesmer.spot_QC.csv
+├── multiqc
+│   ├── multiqc_data
+│   │   ├── multiqc_citations.txt
+│   │   ├── multiqc_data.json
+│   │   ├── multiqc.log
+│   │   └── multiqc_sources.txt
+│   ├── multiqc_plots
+│   └── multiqc_report.html
+├── pipeline_info
+│   ├── execution_report_2023-10-17_16-04-41.html
+│   ├── execution_timeline_2023-10-17_16-04-41.html
+│   ├── execution_trace_2023-10-17_16-04-41.txt
+│   ├── params_2023-10-17_16-04-52.json
+│   ├── pipeline_dag_2023-10-17_16-04-41.html
+│   └── software_versions.yml
+├── projectedspots
+│   ├── heart_2d_r1_s2.spots.subset_markedDups.channel_names.csv -> /workspace/work/e1/a39ad1ee773cabf73972d787615dad/heart_2d_r1_s2.spots.subset_markedDups.channel_names.csv
+│   └── heart_2d_r1_s2.spots.subset_markedDups.tiff -> /workspace/work/e1/a39ad1ee773cabf73972d787615dad/heart_2d_r1_s2.spots.subset_markedDups.tiff
+└── stack
+    └── heart_2d_r1_s2.stack.ome.tif -> /workspace/work/38/5fffd10225eefa63198eb84c9f4f04/heart_2d_r1_s2.stack.ome.tif
+```
 
 ### FastQC
 

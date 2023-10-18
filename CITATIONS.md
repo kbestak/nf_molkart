@@ -8,11 +8,29 @@
 
 > Di Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311.
 
+## Testing data
+
+The maize root dataset used as testing data is provided by [Resolve Biosciences](https://resolvebiosciences.com/).
+
 ## Pipeline tools
 
-- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+- [Mindagap](https://github.com/ViriatoII/MindaGap)
 
-  > Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online].
+- [Mesmer](https://pubmed.ncbi.nlm.nih.gov/34795433/)
+
+  > Greenwald NF, Miller G, Moen E, Kong A, Kagel A, Dougherty T, Fullaway CC, McIntosh BJ, Leow KX, Schwartz MS, Pavelchek C, Cui S, Camplisson I, Bar-Tal O, Singh J, Fong M, Chaudhry G, Abraham Z, Moseley J, Warshawsky S, Soon E, Greenbaum S, Risom T, Hollmann T, Bendall SC, Keren L, Graf W, Angelo M, Van Valen D. Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning. Nat Biotechnol. 2022 Apr;40(4):555-565. doi: 10.1038/s41587-021-01094-0. Epub 2021 Nov 18. PMID: 34795433; PMCID: PMC9010346.
+
+- [Cellpose](https://www.nature.com/articles/s41592-020-01018-x)
+
+  > Stringer, C., Wang, T., Michaelos, M. et al. Cellpose: a generalist algorithm for cellular segmentation. Nat Methods 18, 100–106 (2021). https://doi.org/10.1038/s41592-020-01018-x
+
+- [ilastik](https://www.nature.com/articles/s41592-019-0582-9)
+
+  > Berg, S., Kutra, D., Kroeger, T. et al. ilastik: interactive machine learning for (bio)image analysis. Nat Methods 16, 1226–1232 (2019). https://doi.org/10.1038/s41592-019-0582-9
+
+- [MCQuant](https://www.nature.com/articles/s41592-021-01308-y)
+
+  > Schapiro, D., Sokolov, A., Yapp, C. et al. MCMICRO: a scalable, modular image-processing pipeline for multiplexed tissue imaging. Nat Methods 19, 311–315 (2022). https://doi.org/10.1038/s41592-021-01308-y
 
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
