@@ -19,7 +19,7 @@ process CREATE_STACK {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    stack.py \\
+    stack_optimized.py \\
         --input ${image} \\
         --output ${prefix}.ome.tif \\
         $args
