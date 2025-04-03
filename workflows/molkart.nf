@@ -4,6 +4,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+include { CROPROI        } from '../modules/local/croproi/main'
 include { CROPTIFF       } from '../modules/local/croptiff/main'
 include { CROPHDF5       } from '../modules/local/crophdf5/main'
 include { CREATE_ANNDATA } from '../modules/local/createanndata/main'
@@ -118,6 +119,7 @@ workflow MOLKART {
                 it[2] == null ? tuple(it[0], 1) : tuple(it[0], 2)
             } // hardcodes that if membrane channel present, num_channels is 2, otherwise 1
         ).set{ training_in }
+        CROPROI(stack_mix)
 
         CROPHDF5(training_in)
         ch_versions = ch_versions.mix(CROPHDF5.out.versions)
