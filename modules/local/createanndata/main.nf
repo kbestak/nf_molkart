@@ -8,8 +8,8 @@ process CREATE_ANNDATA {
     tuple val(meta), path(spot2cell)
 
     output:
-    tuple val(meta), path("*.adata") , emit: stack
-    path "versions.yml"              , emit: versions
+    tuple val(meta), path("*.h5ad"), emit: anndata
+    path "versions.yml"            , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -21,7 +21,7 @@ process CREATE_ANNDATA {
     create_anndata.py \\
         --input ${spot2cell} \\
         --spatial_cols X_centroid Y_centroid \\
-        --output ${prefix}.adata \\
+        --output ${prefix}.h5ad \\
         ${args}
 
     cat <<-END_VERSIONS > versions.yml
@@ -33,7 +33,7 @@ process CREATE_ANNDATA {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.adata
+    touch ${prefix}.h5ad
 
         cat <<-END_VERSIONS > versions.yml
     "${task.process}":

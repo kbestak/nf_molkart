@@ -36,7 +36,7 @@ process CREATE_STACK {
 
         cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        molkart_createanndata: \$(create_anndata.py --version)
+        molkart_stack: \$(stack.py --version)
     END_VERSIONS
     """
 }

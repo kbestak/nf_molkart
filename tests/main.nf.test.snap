@@ -10,7 +10,7 @@
                     "molkart_clahe": "0.1.0"
                 },
                 "CREATE_ANNDATA": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_createanndata": "0.2.0"
                 },
                 "CREATE_STACK": {
                     "molkart_stack": "0.1.0"
@@ -39,8 +39,8 @@
             },
             [
                 "anndata",
-                "anndata/mem_only_cellpose.adata",
-                "anndata/mem_only_mesmer.adata",
+                "anndata/mem_only_cellpose.h5ad",
+                "anndata/mem_only_mesmer.h5ad",
                 "clahe",
                 "clahe/mem_only_membrane_gridfilled_clahe.tiff",
                 "clahe/mem_only_nuclear_gridfilled_clahe.tiff",
@@ -88,6 +88,8 @@
                 "stack/mem_only_stack.ome.tif"
             ],
             [
+                "mem_only_cellpose.h5ad:md5,1562cd97269036611d34805b4d72ce6c",
+                "mem_only_mesmer.h5ad:md5,095433550d08d78cf011c3d5db69f444",
                 "mem_only_membrane_gridfilled.tiff:md5,6e24160d758468d2de07ca200dfb62c2",
                 "mem_only_nuclear_gridfilled.tiff:md5,123763d54f05b2274690b3b84f9690b1",
                 "mem_only_spots_markedDups.txt:md5,4562caad05850d7dd7b6e9235e068a8b",
@@ -103,10 +105,10 @@
                 "mem_only_mesmer_mask.tif:md5,6f8c792ccc4cca97b5696990fb4e3801"
             ]
         ],
-        "timestamp": "2025-10-26T22:35:20.772225588",
+        "timestamp": "2026-06-08T14:49:01.623950544",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
         }
     },
     "Two channels, stardist, mesmer, cellpose, clahe - stub": {
@@ -120,10 +122,10 @@
                     "molkart_clahe": "0.1.0"
                 },
                 "CREATE_ANNDATA": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_createanndata": "0.2.0"
                 },
                 "CREATE_STACK": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_stack": "0.1.0"
                 },
                 "DEEPCELL_MESMER": {
                     "deepcell_mesmer": "0.4.1"
@@ -155,9 +157,9 @@
             },
             [
                 "anndata",
-                "anndata/mem_only_cellpose.adata",
-                "anndata/mem_only_mesmer.adata",
-                "anndata/mem_only_stardist.adata",
+                "anndata/mem_only_cellpose.h5ad",
+                "anndata/mem_only_mesmer.h5ad",
+                "anndata/mem_only_stardist.h5ad",
                 "clahe",
                 "clahe/mem_only_membrane_gridfilled_clahe.tiff",
                 "clahe/mem_only_nuclear_gridfilled_clahe.tiff",
@@ -197,6 +199,9 @@
                 "stack/mem_only_stack.ome.tif"
             ],
             [
+                "mem_only_cellpose.h5ad:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "mem_only_mesmer.h5ad:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "mem_only_stardist.h5ad:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "mem_only_membrane_gridfilled.tiff:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "mem_only_nuclear_gridfilled.tiff:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "mem_only_spots_markedDups.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -214,7 +219,7 @@
                 "mem_only_stardist_mask.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
             ]
         ],
-        "timestamp": "2026-06-05T16:16:41.721905899",
+        "timestamp": "2026-06-08T14:50:31.26145325",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -225,7 +230,7 @@
             6,
             {
                 "CREATE_ANNDATA": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_createanndata": "0.2.0"
                 },
                 "MASKFILTER": {
                     "molkart_maskfilter": "0.1.0"
@@ -248,7 +253,7 @@
             },
             [
                 "anndata",
-                "anndata/nuc_only_stardist.adata",
+                "anndata/nuc_only_stardist.h5ad",
                 "molkartqc",
                 "molkartqc/nuc_only.stardist.spot_QC.csv",
                 "multiqc",
@@ -281,6 +286,7 @@
                 "spot2cell/cellxgene_nuc_only_stardist.csv"
             ],
             [
+                "nuc_only_stardist.h5ad:md5,9ac6c78b5cf9a52cbd779417a144ec21",
                 "nuc_only.stardist.spot_QC.csv:md5,d234b17d36668995e0efc2586276c20e",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f",
                 "multiqc_segmentation_stats.txt:md5,77bc1486f5e9a5574807c7198b0354a5",
@@ -289,10 +295,10 @@
                 "nuc_only_stardist_mask.tif:md5,adfcdce7a974e0fcf1bfc0e488d523e3"
             ]
         ],
-        "timestamp": "2025-11-17T16:16:47.767909528",
+        "timestamp": "2026-06-08T14:49:53.867019649",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
         }
     },
     "Nuclear channel, stardist, mesmer and cellpose, without clahe": {
@@ -303,7 +309,7 @@
                     "cellpose": "3.0.1"
                 },
                 "CREATE_ANNDATA": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_createanndata": "0.2.0"
                 },
                 "DEEPCELL_MESMER": {
                     "deepcell_mesmer": "0.4.1"
@@ -335,9 +341,9 @@
             },
             [
                 "anndata",
-                "anndata/nuc_only_cellpose.adata",
-                "anndata/nuc_only_mesmer.adata",
-                "anndata/nuc_only_stardist.adata",
+                "anndata/nuc_only_cellpose.h5ad",
+                "anndata/nuc_only_mesmer.h5ad",
+                "anndata/nuc_only_stardist.h5ad",
                 "mindagap",
                 "mindagap/nuc_only_nuclear_gridfilled.tiff",
                 "mindagap/nuc_only_spots_markedDups.txt",
@@ -385,6 +391,9 @@
                 "spot2cell/cellxgene_nuc_only_stardist.csv"
             ],
             [
+                "nuc_only_cellpose.h5ad:md5,2bd099d30bc5d59ad1fc81e830f1a267",
+                "nuc_only_mesmer.h5ad:md5,121c919b3b63f5681272edd995ce429c",
+                "nuc_only_stardist.h5ad:md5,bab88e85a52cbd37fd4bc5f5bdda700f",
                 "nuc_only_nuclear_gridfilled.tiff:md5,123763d54f05b2274690b3b84f9690b1",
                 "nuc_only_spots_markedDups.txt:md5,4562caad05850d7dd7b6e9235e068a8b",
                 "nuc_only.cellpose.spot_QC.csv:md5,671d25520018573aaf6d7e5706dc8bc3",
@@ -403,10 +412,10 @@
                 "nuc_only_stardist_mask.tif:md5,89baf7c188fd640f236dbf8b116664e5"
             ]
         ],
-        "timestamp": "2025-10-26T22:34:16.345279697",
+        "timestamp": "2026-06-08T14:48:26.734818969",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
         }
     },
     "Skip mindagap - clahe - cellpose": {
@@ -420,7 +429,7 @@
                     "molkart_clahe": "0.1.0"
                 },
                 "CREATE_ANNDATA": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_createanndata": "0.2.0"
                 },
                 "CREATE_STACK": {
                     "molkart_stack": "0.1.0"
@@ -440,7 +449,7 @@
             },
             [
                 "anndata",
-                "anndata/mem_only_cellpose.adata",
+                "anndata/mem_only_cellpose.h5ad",
                 "clahe",
                 "clahe/mem_only_membrane_clahe.tiff",
                 "clahe/mem_only_nuclear_clahe.tiff",
@@ -478,6 +487,7 @@
                 "stack/mem_only_stack.ome.tif"
             ],
             [
+                "mem_only_cellpose.h5ad:md5,dd650b36eb6751c6e7bde03fc254ddc9",
                 "mem_only.cellpose.spot_QC.csv:md5,e393966b17effbc05c1b93bb590d7e80",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f",
                 "multiqc_segmentation_stats.txt:md5,df4a397185b42e99cf2e45468a0decb7",
@@ -486,10 +496,10 @@
                 "mem_only_cellpose_filtered.tif:md5,5c566683d7af62721415329799ad2ac1"
             ]
         ],
-        "timestamp": "2025-10-26T22:36:05.905295847",
+        "timestamp": "2026-06-08T14:49:33.31420697",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.6"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
         }
     },
     "Create training subset": {
@@ -563,7 +573,7 @@
                     "molkart_clahe": "0.1.0"
                 },
                 "CREATE_STACK": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_stack": "0.1.0"
                 },
                 "CROPHDF5": {
                     "molkart_crophdf5": "Stub version"
@@ -618,7 +628,7 @@
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e"
             ]
         ],
-        "timestamp": "2026-06-05T16:16:55.60494243",
+        "timestamp": "2026-06-08T14:50:45.123899548",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

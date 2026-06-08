@@ -15,16 +15,29 @@ def get_args():
     description = """Anndata object creation"""
 
     # Add parser
-    parser = AP(description=description, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = AP(
+        description=description, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
 
     # Sections
-    inputs = parser.add_argument_group(title="Required Input", description="Path to required input file")
-    inputs.add_argument("-i", "--input", type=str, help="Path to the spot2cell csv file.")
-    inputs.add_argument("-s", "--spatial_cols", nargs="+", help="Column names for location data.")
-    inputs.add_argument(
-        "-o", "--output", dest="output", action="store", required=True, help="Path to output anndata object."
+    inputs = parser.add_argument_group(
+        title="Required Input", description="Path to required input file"
     )
-    inputs.add_argument("--version", action="version", version="0.1.0")
+    inputs.add_argument(
+        "-i", "--input", type=str, help="Path to the spot2cell csv file."
+    )
+    inputs.add_argument(
+        "-s", "--spatial_cols", nargs="+", help="Column names for location data."
+    )
+    inputs.add_argument(
+        "-o",
+        "--output",
+        dest="output",
+        action="store",
+        required=True,
+        help="Path to output anndata object.",
+    )
+    inputs.add_argument("--version", action="version", version="0.2.0")
     arg = parser.parse_args()
     arg.input = abspath(arg.input)
     arg.output = abspath(arg.output)
@@ -32,21 +45,28 @@ def get_args():
 
 
 def create_spatial_anndata(input, spatial_cols):
-    df = pd.read_csv(input)
-    spatial_coords = np.array(df[args.spatial_cols].values.tolist())
-    # Find the index of 'Y_centroid' column
-    y_centroid_index = df.columns.get_loc("X_centroid")
-    # Create a list of all columns from 'Y_centroid' to the end
-    metadata_cols = df.columns[y_centroid_index:]
-    # Extract the excluded columns as metadata
-    metadata = df[metadata_cols]
+    # Extracts information from filename to name obs
+    filename = input.split("/")[-1].split(".")[0]
+    seg_method = filename.split("_")[-1]
+    sample_id = "_".join(filename.split("_")[:-1])
 
-    count_table = csr_matrix(df.drop(list(metadata_cols), axis=1).values.tolist())
-    adata = AnnData(count_table, obsm={"spatial": spatial_coords})
-    # Add the metadata to adata.obs
+    df = pd.read_csv(input, index_col="CellID")
+    spatial_coords = np.array(df[spatial_cols].values.tolist())
+    # Assumption - spatial columns start off the metadata columns
+    first_spatial_col = min(spatial_cols, key=lambda col: df.columns.get_loc(col))
+    boundary_index = df.columns.get_loc(first_spatial_col)
+    metadata_cols = df.columns[boundary_index:]
+    metadata = df[metadata_cols]
+    gene_cols = df.columns[:boundary_index]
+
+    count_table = csr_matrix(df[gene_cols].values.tolist())
+    adata = AnnData(
+        count_table, obsm={"spatial": spatial_coords}, var=pd.DataFrame(index=gene_cols)
+    )
     for col in metadata.columns:
         adata.obs[col] = metadata[col].values
-    adata.obs_names = [f"Cell_{i:d}" for i in range(adata.n_obs)]
+
+    adata.obs_names = [f"{sample_id}-{seg_method}-cell_{i}" for i in range(adata.n_obs)]
     return adata
 
 

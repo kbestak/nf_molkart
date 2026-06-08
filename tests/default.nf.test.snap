@@ -9,7 +9,7 @@
                     "molkart_clahe": "0.1.0"
                 },
                 "CREATE_ANNDATA": {
-                    "molkart_createanndata": "0.1.0"
+                    "molkart_createanndata": "0.2.0"
                 },
                 "CREATE_STACK": {
                     "molkart_stack": "0.1.0"
@@ -44,9 +44,9 @@
             },
             [
                 "anndata",
-                "anndata/mem_only_cellpose.adata",
-                "anndata/mem_only_mesmer.adata",
-                "anndata/mem_only_stardist.adata",
+                "anndata/mem_only_cellpose.h5ad",
+                "anndata/mem_only_mesmer.h5ad",
+                "anndata/mem_only_stardist.h5ad",
                 "clahe",
                 "clahe/mem_only_membrane_gridfilled_clahe.tiff",
                 "clahe/mem_only_nuclear_gridfilled_clahe.tiff",
@@ -100,6 +100,9 @@
                 "stack/mem_only_stack.ome.tif"
             ],
             [
+                "mem_only_cellpose.h5ad:md5,1562cd97269036611d34805b4d72ce6c",
+                "mem_only_mesmer.h5ad:md5,095433550d08d78cf011c3d5db69f444",
+                "mem_only_stardist.h5ad:md5,c119c96a66d7d9f30be743efc0c84449",
                 "mem_only_membrane_gridfilled.tiff:md5,6e24160d758468d2de07ca200dfb62c2",
                 "mem_only_nuclear_gridfilled.tiff:md5,123763d54f05b2274690b3b84f9690b1",
                 "mem_only_spots_markedDups.txt:md5,4562caad05850d7dd7b6e9235e068a8b",
@@ -119,10 +122,10 @@
                 "mem_only_stardist_mask.tif:md5,527ada48b8127622300952ab163ef0a8"
             ]
         ],
+        "timestamp": "2026-06-08T14:47:53.05802477",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2025-11-17T23:03:50.719079816"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

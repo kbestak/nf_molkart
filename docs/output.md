@@ -104,7 +104,7 @@ Spot2cell is a local module that assigns spots (without Duplicates) to cells via
 <summary>Output files</summary>
 
 - `anndata/`
-  - `*.adata`: Anndata object containing the spot count table, spatial locations of cells in `adata.obsm` and metadata like 'Area', 'MajorAxisLength', 'MinorAxisLength', 'Eccentricity', 'Solidity', 'Extent', 'Orientation' in `adata.obs`
+  - `*.h5ad`: Anndata object containing the spot count table, spatial locations of cells in `adata.obsm` and metadata including 'Area', 'MajorAxisLength', 'MinorAxisLength', 'Eccentricity', 'Solidity', 'Extent', 'Orientation' in `adata.obs`, and respective genes in `adata.var`
 
 </details>
 
