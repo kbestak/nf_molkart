@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [PR #130](https://github.com/nf-core/molkart/pull/130) - support for new Molecular Cartography spot table format (keep first 4 columns only)
 - [PR TODO](https://github.com/nf-core/molkart/pull/___) - spatial columns are correctly used, observation indices are constructed from sample ID and segmentation method, gene names are stored in adata.var_names
-created Anndata object now contains var_names, output suffix is now `h5ad`
+  created Anndata object now contains var_names, output suffix is now `h5ad`
 
 ## v1.2.0
 
