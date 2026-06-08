@@ -3,7 +3,9 @@
         "content": [
             {
                 "CELLPOSE": {
-                    "cellpose": "3.0.1"
+                    "cellpose": "4.0.9",
+                    "python": "3.12.12",
+                    "torch": "2.10.0+cu128"
                 },
                 "CLAHE": {
                     "molkart_clahe": "0.1.0"
@@ -100,20 +102,20 @@
                 "stack/mem_only_stack.ome.tif"
             ],
             [
-                "mem_only_cellpose.h5ad:md5,1562cd97269036611d34805b4d72ce6c",
+                "mem_only_cellpose.h5ad:md5,34c01b706fe8a4ad0ca3704e2606a40a",
                 "mem_only_mesmer.h5ad:md5,095433550d08d78cf011c3d5db69f444",
                 "mem_only_stardist.h5ad:md5,c119c96a66d7d9f30be743efc0c84449",
                 "mem_only_membrane_gridfilled.tiff:md5,6e24160d758468d2de07ca200dfb62c2",
                 "mem_only_nuclear_gridfilled.tiff:md5,123763d54f05b2274690b3b84f9690b1",
                 "mem_only_spots_markedDups.txt:md5,4562caad05850d7dd7b6e9235e068a8b",
-                "mem_only.cellpose.spot_QC.csv:md5,2090a0bc4307e9712a6150bafeb38ec5",
+                "mem_only.cellpose.spot_QC.csv:md5,09c97c6cdc6bc4460768d7236bab405a",
                 "mem_only.mesmer.spot_QC.csv:md5,3273bd6fecf93a3d240614d1b38831c9",
                 "mem_only.stardist.spot_QC.csv:md5,1b7a3870e08576b07cb5466ffad9da52",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f",
-                "multiqc_segmentation_stats.txt:md5,387be8d95a9bdcb52a13acedb2b9bd99",
-                "mem_only_cellpose_mask.tif:md5,d962bae7277cc7ad8cf96708a806b418",
-                "mem_only_cellpose_filtered.csv:md5,4cd99d408b527fb0e74074cbd1880f52",
-                "mem_only_cellpose_filtered.tif:md5,33f1f2e79dec6ebb27e2761413c55696",
+                "multiqc_segmentation_stats.txt:md5,c933db3143c6fac4316d905d25098336",
+                "mem_only_cellpose_mask.tif:md5,67f98e4832130bd0db27dccf3e161194",
+                "mem_only_cellpose_filtered.csv:md5,66c1d9d9ab0d026b485ebd9d017eaf84",
+                "mem_only_cellpose_filtered.tif:md5,190f9bf426492083b51b2278119c261a",
                 "mem_only_mesmer_filtered.csv:md5,d489b06c9cd6cc4218f13e17b1fc5ba3",
                 "mem_only_mesmer_filtered.tif:md5,5751b2e39393a9c8221396f5ef592035",
                 "mem_only_stardist_filtered.csv:md5,68ab417273f2f77a738891c773eb931a",
@@ -122,7 +124,7 @@
                 "mem_only_stardist_mask.tif:md5,527ada48b8127622300952ab163ef0a8"
             ]
         ],
-        "timestamp": "2026-06-08T14:47:53.05802477",
+        "timestamp": "2026-06-08T17:36:09.414978771",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [PR TODO](https://github.com/nf-core/molkart/pull/___) - GPU-enabled Cellpose updated to 4.0.9 - chan and chan2 parameters deprecated.
+
 ### Changed
 
 - [PR #132](https://github.com/nf-core/molkart/pull/132) - Template update (@kbestak)

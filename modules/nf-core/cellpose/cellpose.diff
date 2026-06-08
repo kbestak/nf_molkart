@@ -1,0 +1,30 @@
+Changes in component 'nf-core/cellpose'
+Changes in 'cellpose/main.nf':
+--- modules/nf-core/cellpose/main.nf
++++ modules/nf-core/cellpose/main.nf
+@@ -26,6 +26,7 @@
+     script:
+     def args = task.ext.args ?: ''
+     def model_command = model ? "--pretrained_model ${model}" : ""
++    def local_models_path = task.ext.cellpose_models_dir ? "${task.ext.cellpose_models_dir}" : "\$PWD/.cellpose"
+     def gpu_flag = task.accelerator ? "--use_gpu" : ""
+     prefix = task.ext.prefix ?: "${meta.id}"
+     """
+@@ -34,7 +35,7 @@
+     # Container runs as root with HOME=/ which is not writable
+     export HOME=\$PWD
+     export MPLCONFIGDIR=\$PWD/.matplotlib
+-    export CELLPOSE_LOCAL_MODELS_PATH=\$PWD/.cellpose
++    export CELLPOSE_LOCAL_MODELS_PATH=${local_models_path}
+     mkdir -p \$MPLCONFIGDIR \$CELLPOSE_LOCAL_MODELS_PATH
+ 
+     cellpose \\
+
+'modules/nf-core/cellpose/environment.yml' is unchanged
+'modules/nf-core/cellpose/meta.yml' is unchanged
+'modules/nf-core/cellpose/tests/nextflow.config' is unchanged
+'modules/nf-core/cellpose/tests/gpu.nf.test' is unchanged
+'modules/nf-core/cellpose/tests/main.nf.test.snap' is unchanged
+'modules/nf-core/cellpose/tests/main.nf.test' is unchanged
+'modules/nf-core/cellpose/tests/gpu.nf.test.snap' is unchanged
+************************************************************

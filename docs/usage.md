@@ -86,8 +86,7 @@ segmentation_min_area: null
 segmentation_max_area: null
 cellpose_save_flows: false
 cellpose_diameter: 30
-cellpose_chan: 0
-cellpose_chan2: null
+cellpose_models_dir: null
 cellpose_pretrained_model: "cyto"
 cellpose_custom_model: null
 cellpose_flow_threshold: 0.4
@@ -140,6 +139,9 @@ nextflow run nf-core/molkart --input ./samplesheet.csv --outdir ./results -profi
 
 The four segmentation approaches (Mesmer, Cellpose, Stardist, ilastik) can be chosen using the `segmentation_method` parameter. If multiple are given (comma-separated, no whitespace), the pipeline will apply them in parallel. For parameter-based model options, please check the original tool's documentation. These can be provided with `mesmer_compartment`, `cellpose_pretrained_model`, and `stardist_model` for Mesmer, Cellpose and Stardist respectively.
 
+:::note
+Cellpose 4 has been added to the pipeline, alongside a GPU profile which is strongly encouraged for its use. TODO: give explanation how an older version could be used instead.
+:::
 :::note
 If a custom Cellpose model is provided via the `cellpose_custom_model` parameter as a path, the `cellpose_pretrained_model` parameter is ignored.
 :::

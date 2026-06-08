@@ -36,17 +36,17 @@
                 "cellpose_chan": {
                     "type": "integer",
                     "default": 0,
-                    "description": "Specifies the channel to be segmented by Cellpose.",
+                    "description": "Deprecated as of Cellpose 4. Specifies the channel to be segmented by Cellpose.",
                     "fa_icon": "fas fa-dice-one"
                 },
                 "cellpose_chan2": {
                     "type": "integer",
-                    "description": "Specifies nuclear channel index for Cellpose if using pretrained models such as cyto.",
+                    "description": "Deprecated as of Cellpose 4. Specifies nuclear channel index for Cellpose if using pretrained models such as cyto.",
                     "fa_icon": "fas fa-dice-two"
                 },
                 "cellpose_pretrained_model": {
                     "type": "string",
-                    "default": "cyto",
+                    "default": "cpsam_v2",
                     "description": "Pretrained Cellpose model to be used for segmentation.",
                     "fa_icon": "fas fa-address-card"
                 },
@@ -77,6 +77,11 @@
                     "default": 0,
                     "fa_icon": "fas fa-border-style",
                     "description": "Cell probability threshold for Cellpose"
+                },
+                "cellpose_models_dir": {
+                    "type": "string",
+                    "description": "Local directory where Cellpose models are downloaded into. Prevents multiple downloads per task.",
+                    "fa_icon": "fas fa-barcode"
                 },
                 "mesmer_image_mpp": {
                     "type": "number",
@@ -169,7 +174,7 @@
                 },
                 "clahe_kernel": {
                     "type": "number",
-                    "default": 25.0,
+                    "default": 25,
                     "description": "Kernel size to be used by CLAHE.",
                     "fa_icon": "far fa-object-group"
                 },
